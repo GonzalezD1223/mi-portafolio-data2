@@ -470,7 +470,7 @@ export default function App() {
                   </button>
                 </a>
                 <a
-                  href="/Informes_Concl_Reque.pdf"
+                  href="/Informe_Conclusiones_Requerimientos.pdf"
                   target="_blank"
                   rel="noreferrer"
                   style={{ textDecoration: 'none' }}
