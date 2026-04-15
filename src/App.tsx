@@ -379,7 +379,7 @@ export default function App() {
                   Identifiqué una vulnerabilidad crítica: una{' '}
                   <strong>caída del 82% en ingresos anuales</strong> provocada
                   por la alta dependencia de productos orgánicos y un ticket
-                  promedio de solo <strong>19,34 €</strong>. Diseñé una
+                  promedio de solo <strong>19,34 $</strong>. Diseñé una
                   estrategia de diversificación y un motor de recomendaciones
                   para mitigar el riesgo del 93% de concentración en un solo
                   departamento.
