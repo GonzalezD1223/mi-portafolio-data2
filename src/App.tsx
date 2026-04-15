@@ -78,6 +78,7 @@ export default function App() {
       boxShadow: '0 10px 25px rgba(0,0,0,0.15)',
       border: '3px solid #8a8160' // Un pequeño borde para que resalte
     }}
+    />
             <div style={{ marginTop: '15px' }}>
               <a href="https://www.linkedin.com/in/jesusdavidgonzalezp" target="_blank" rel="noreferrer">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" width="40" alt="LinkedIn" />
