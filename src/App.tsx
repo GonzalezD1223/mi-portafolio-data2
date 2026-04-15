@@ -183,7 +183,7 @@ export default function App() {
                 Ver proyectos
               </button>
               {/* Asegúrate de tener este archivo en la carpeta public */}
-              <a href="/CV_David_Gonzalez_Data_Analyst.pdf" target="_blank">
+              <a href="/CV_JesusGonzalez.pdf" target="_blank">
                 <button style={buttonStyle}>Descargar CV</button>
               </a>
             </div>
