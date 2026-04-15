@@ -70,8 +70,8 @@ export default function App() {
     src="/buso_Rojo.jpg" 
     alt="David Gonzalez" 
     style={{ 
-      width: '160px',       // Ancho reducido
-      height: '160px',      // Altura fija igual al ancho para que sea un cuadrado
+      width: '240px',       // Ancho reducido
+      height: '240px',      // Altura fija igual al ancho para que sea un cuadrado
       objectFit: 'cover',   // ESTO ES CLAVE: Recorta la foto para que encaje sin estirarse
       objectPosition: 'top', // Enfoca la parte superior (tu cara) y recorta lo de abajo
       borderRadius: '50%',  // Opcional: cámbialo a '50%' si la quieres circular, o déjalo en '10px' si la quieres cuadrada
