@@ -35,7 +35,7 @@ export default function App() {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           position: 'relative',
-          color: 'white',
+          color: 'black',
           display: 'flex',
           flexDirection: 'column',
         }}
