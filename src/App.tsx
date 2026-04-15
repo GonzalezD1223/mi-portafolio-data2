@@ -31,11 +31,11 @@ export default function App() {
         style={{
           width: '100%',
           minHeight: '320px',
-          backgroundImage: "url('/Inicio.png')",
+          backgroundImage: "url('/FONDO_NEGRO.png')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           position: 'relative',
-          color: 'black',
+          color: 'White',
           display: 'flex',
           flexDirection: 'column',
         }}
