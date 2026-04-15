@@ -13,6 +13,7 @@ export default function App() {
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    0;
   };
 
   return (
@@ -30,27 +31,16 @@ export default function App() {
       <div
         style={{
           width: '100%',
-          minHeight: '320px',
-          backgroundImage: "url('/FONDO_NEGRO.png')",
+          minHeight: '290px',
+          backgroundImage: "url('/Banner.png')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           position: 'relative',
-          color: 'White',
+          color: 'white',
           display: 'flex',
           flexDirection: 'column',
         }}
       >
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            background: 'rgba(0,0,0,0.6)',
-          }}
-        />
-
         {/* HEADER */}
         <div
           style={{
@@ -62,14 +52,15 @@ export default function App() {
             padding: '20px 5%',
           }}
         >
-          <h2 style={{ margin: 0, fontSize: '1.2rem' }}>DG</h2>
+          <h2 style={{ margin: 0, fontSize: '1.2rem', color: '#111' }}>DG</h2>
           <div
             style={{
               display: 'flex',
               gap: '20px',
               cursor: 'pointer',
               fontWeight: '500',
-              fontSize: '14px',
+              fontSize: '1.2rem',
+              color: '#111',
             }}
           >
             <span onClick={scrollToProjects}>Proyectos</span>
@@ -89,22 +80,7 @@ export default function App() {
             textAlign: 'center',
             padding: '40px 20px',
           }}
-        >
-          <h1
-            style={{
-              fontSize: 'clamp(24px, 5vw, 36px)',
-              maxWidth: '800px',
-              margin: 0,
-              lineHeight: '1.3',
-            }}
-          >
-            David Gonzalez
-            <br />
-            <span style={{ fontWeight: 'normal', fontSize: '0.8em' }}>
-              Analista de Datos enfocado en transformar datos en decisiones
-            </span>
-          </h1>
-        </div>
+        ></div>
       </div>
 
       {/* FOTO + PRESENTACION */}
@@ -162,12 +138,14 @@ export default function App() {
                 textAlign: 'justify',
               }}
             >
-              Analista de datos en formación con experiencia práctica en Excel
-              avanzado (Power Query y Power Pivot), SQL y Power BI (ETL y DAX).
-              Me especializo en limpiar, transformar y visualizar datos para
-              convertirlos en información clara y útil para la toma de
-              decisiones. Actualmente estoy fortaleciendo mis conocimientos en
-              Python y buscando mi primera oportunidad como analista de datos.
+              Analista de datos con más de 10 años de experiencia transformando
+              datos en decisiones estratégicas y resultados medibles.
+              Especialista en SQL, Excel Avanzado y Power BI, con un enfoque
+              sólido en automatización y optimización de procesos. He liderado
+              el análisis de grandes volúmenes de información para detectar
+              oportunidades de mejora, mitigar riesgos y encontrar patrones que
+              impulsan la rentabilidad del negocio. Además, integro Python para
+              desarrollar soluciones analíticas avanzadas y escalables.
             </p>
 
             <div
@@ -183,7 +161,7 @@ export default function App() {
                 Ver proyectos
               </button>
               {/* Asegúrate de tener este archivo en la carpeta public */}
-              <a href="/CV_JesusGonzalez.pdf" target="_blank">
+              <a href="/CV_David_Gonzalez_Data_Analyst.pdf" target="_blank">
                 <button style={buttonStyle}>Descargar CV</button>
               </a>
             </div>
@@ -379,7 +357,7 @@ export default function App() {
                   Identifiqué una vulnerabilidad crítica: una{' '}
                   <strong>caída del 82% en ingresos anuales</strong> provocada
                   por la alta dependencia de productos orgánicos y un ticket
-                  promedio de solo <strong>19,34 $</strong>. Diseñé una
+                  promedio de solo <strong>19,34 €</strong>. Diseñé una
                   estrategia de diversificación y un motor de recomendaciones
                   para mitigar el riesgo del 93% de concentración en un solo
                   departamento.
