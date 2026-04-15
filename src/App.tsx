@@ -65,13 +65,19 @@ export default function App() {
       <section style={{ maxWidth: '1000px', margin: 'auto', padding: '60px 20px' }}>
         <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '40px' }}>
           
-          <div style={{ textAlign: 'center' }}>
-            {/* CAMBIO AQUÍ: Ahora llama directamente a la imagen en la carpeta public */}
-            <img 
-              src="/buso_Rojo.jpg" 
-              alt="David Gonzalez" 
-              style={{ width: '100%', maxWidth: '240px', height: 'auto', borderRadius: '6px', boxShadow: '0 10px 25px rgba(0,0,0,0.15)' }} 
-            />
+<div style={{ textAlign: 'center' }}>
+  <img 
+    src="/buso_Rojo.jpg" 
+    alt="David Gonzalez" 
+    style={{ 
+      width: '160px',       // Ancho reducido
+      height: '160px',      // Altura fija igual al ancho para que sea un cuadrado
+      objectFit: 'cover',   // ESTO ES CLAVE: Recorta la foto para que encaje sin estirarse
+      objectPosition: 'top', // Enfoca la parte superior (tu cara) y recorta lo de abajo
+      borderRadius: '50%',  // Opcional: cámbialo a '50%' si la quieres circular, o déjalo en '10px' si la quieres cuadrada
+      boxShadow: '0 10px 25px rgba(0,0,0,0.15)',
+      border: '3px solid #8a8160' // Un pequeño borde para que resalte
+    }}
             <div style={{ marginTop: '15px' }}>
               <a href="https://www.linkedin.com/in/jesusdavidgonzalezp" target="_blank" rel="noreferrer">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" width="40" alt="LinkedIn" />
