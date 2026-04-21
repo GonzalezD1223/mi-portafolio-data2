@@ -161,9 +161,9 @@ export default function App() {
                 Ver proyectos
               </button>
               {/* Asegúrate de tener este archivo en la carpeta public */}
-              <a href="/CV_JesusGonzalez.pdf" target="_blank">
-                <button style={buttonStyle}>Descargar CV</button>
-              </a>
+              <a href="https://cv-jesus-gonzalez.vercel.app/" target="_blank" rel="noopener noreferrer">
+  <button style={buttonStyle}>Ver CV</button>
+</a>
             </div>
           </div>
         </div>
