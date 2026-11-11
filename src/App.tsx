@@ -1,549 +1,499 @@
-import { useState } from 'react';
+const EMAIL = 'david.gp1223@gmail.com';
+const LINKEDIN = 'https://www.linkedin.com/in/jesusdavidgonzalezp';
+const WHATSAPP = 'https://wa.me/573134772818';
+const DASHBOARD =
+  'https://app.powerbi.com/reportEmbed?reportId=0142068e-5f40-4430-a4d0-707b087ab8a2&autoAuth=true&ctid=5cd4039d-27ec-4745-8bf4-e4abd89b3c58';
 
-// ELIMINAMOS EL IMPORT DE FOTO PORQUE USARÁS LA CARPETA PUBLIC
-// ELIMINAMOS EL CÓDIGO QUE ESTABA SUELTO ARRIBA
+const skills: { title: string; items: string[]; strong?: string[] }[] = [
+  {
+    title: 'BI y datos',
+    items: ['Modelado de datos', 'Power Query', 'Power BI Service', 'ETL'],
+    strong: ['Power BI', 'SQL', 'DAX'],
+  },
+  {
+    title: 'Análisis',
+    items: ['Tablas dinámicas', 'XLOOKUP / BUSCARX', 'SPSS', 'Python (base)'],
+    strong: ['Excel avanzado'],
+  },
+  {
+    title: 'Investigación de mercados',
+    items: ['Survey Reporter', 'Cruces estadísticos', 'Jaccard', 'Penalty Analysis'],
+    strong: ['Dimensions'],
+  },
+  {
+    title: 'Calidad de datos',
+    items: [
+      'Validación y homologación',
+      'Reglas de calidad',
+      'Bitácora de cambios',
+      'Controles preventivos',
+      'Documentación',
+    ],
+  },
+];
+
+const sapFlow = ['1 Descargar', '2 Detectar', '3 Revisar', '4 Aprobar', '5 Corregir'];
 
 export default function App() {
-  const [openProject1, setOpenProject1] = useState(false);
-  const [hoveredTool, setHoveredTool] = useState(null);
-
-  const scrollToProjects = () => {
-    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-    0;
-  };
-
   return (
-    <div
-      style={{
-        fontFamily: 'Arial, sans-serif',
-        background: '#ffffff',
-        color: '#111',
-        margin: 0,
-        padding: 0,
-        overflowX: 'hidden',
-      }}
-    >
-      {/* BANNER SUPERIOR */}
-      <div
-        style={{
-          width: '100%',
-          minHeight: '290px',
-          backgroundImage: "url('/Banner.png')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          position: 'relative',
-          color: 'white',
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-      >
-        {/* HEADER */}
-        <div
-          style={{
-            position: 'relative',
-            zIndex: 2,
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            padding: '20px 5%',
-          }}
-        >
-          <h2 style={{ margin: 0, fontSize: '1.2rem', color: '#111' }}>DG</h2>
-          <div
-            style={{
-              display: 'flex',
-              gap: '20px',
-              cursor: 'pointer',
-              fontWeight: '500',
-              fontSize: '1.2rem',
-              color: '#111',
-            }}
-          >
-            <span onClick={scrollToProjects}>Proyectos</span>
-            <span onClick={scrollToContact}>Contacto</span>
-          </div>
+    <>
+      <header className="nav">
+        <div className="container nav-inner">
+          <a className="brand" href="#inicio" aria-label="Inicio">
+            DG
+          </a>
+          <nav className="nav-links" aria-label="Principal">
+            <a href="#sobre-mi">Sobre mí</a>
+            <a href="#competencias">Competencias</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#experiencia">Experiencia</a>
+            <a className="nav-cta" href="#contacto">
+              Contacto
+            </a>
+          </nav>
         </div>
+      </header>
 
-        {/* TEXTO CENTRADO */}
-        <div
-          style={{
-            position: 'relative',
-            zIndex: 2,
-            flexGrow: 1,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            textAlign: 'center',
-            padding: '40px 20px',
-          }}
-        ></div>
-      </div>
-
-      {/* FOTO + PRESENTACION */}
-      <section
-        style={{ maxWidth: '1000px', margin: 'auto', padding: '60px 20px' }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: '40px',
-          }}
-        >
-          <div style={{ textAlign: 'center' }}>
-            <img
-              src="/buso_Rojo.jpg"
-              alt="David Gonzalez"
-              style={{
-                width: '240px', // Ancho reducido
-                height: '240px', // Altura fija igual al ancho para que sea un cuadrado
-                objectFit: 'cover', // ESTO ES CLAVE: Recorta la foto para que encaje sin estirarse
-                objectPosition: 'top', // Enfoca la parte superior (tu cara) y recorta lo de abajo
-                borderRadius: '50%', // Opcional: cámbialo a '50%' si la quieres circular, o déjalo en '10px' si la quieres cuadrada
-                boxShadow: '0 10px 25px rgba(0,0,0,0.15)',
-                border: '3px solid #8a8160', // Un pequeño borde para que resalte
-              }}
-            />
-            <div style={{ marginTop: '15px' }}>
-              <a
-                href="https://www.linkedin.com/in/jesusdavidgonzalezp"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
-                  width="40"
-                  alt="LinkedIn"
-                />
-              </a>
-            </div>
-          </div>
-
-          <div style={{ maxWidth: '500px', textAlign: 'center' }}>
-            <h2 style={{ margin: 0, fontSize: '24px', color: '#444' }}>
-              Analista de Datos
-            </h2>
-            <p
-              style={{
-                marginTop: '15px',
-                color: '#555',
-                lineHeight: '1.6',
-                textAlign: 'justify',
-              }}
-            >
-              Analista de datos con más de 10 años de experiencia transformando
-              datos en decisiones estratégicas y resultados medibles.
-              Especialista en SQL, Excel Avanzado y Power BI, con un enfoque
-              sólido en automatización y optimización de procesos. He liderado
-              el análisis de grandes volúmenes de información para detectar
-              oportunidades de mejora, mitigar riesgos y encontrar patrones que
-              impulsan la rentabilidad del negocio. Además, integro Python para
-              desarrollar soluciones analíticas avanzadas y escalables.
-            </p>
-
-            <div
-              style={{
-                marginTop: '25px',
-                display: 'flex',
-                gap: '15px',
-                justifyContent: 'center',
-                flexWrap: 'wrap',
-              }}
-            >
-              <button onClick={scrollToProjects} style={buttonStyle}>
-                Ver proyectos
-              </button>
-              {/* Asegúrate de tener este archivo en la carpeta public */}
-              <a href="https://cv-jesus-gonzalez.vercel.app/" target="_blank" rel="noopener noreferrer">
-  <button style={buttonStyle}>Ver CV</button>
-</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* HERRAMIENTAS */}
-      <section
-        style={{
-          background: '#8a8160',
-          padding: '20px',
-          textAlign: 'center',
-          color: 'white',
-        }}
-      >
-        <h2 style={{ margin: 0, fontSize: '18px', letterSpacing: '1px' }}>
-          PRINCIPALES HERRAMIENTAS
-        </h2>
-      </section>
-
-      <section style={{ padding: '50px 20px', textAlign: 'center' }}>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            flexWrap: 'wrap',
-            gap: '40px',
-          }}
-        >
-          {['Excel', 'Power BI', 'SQL', 'Python'].map((tool) => (
-            <div
-              key={tool}
-              onMouseEnter={() => setHoveredTool(tool as any)}
-              onMouseLeave={() => setHoveredTool(null)}
-              style={{
-                width: '100px',
-                transition: 'transform 0.3s ease',
-                transform: hoveredTool === tool ? 'scale(1.15)' : 'scale(1)',
-                cursor: 'default',
-              }}
-            >
-              <img
-                src={getIconUrl(tool)}
-                alt={tool}
-                style={{
-                  width: '75px',
-                  height: '75px',
-                  marginBottom: '10px',
-                  filter:
-                    hoveredTool === tool
-                      ? 'drop-shadow(0px 5px 15px rgba(0,0,0,0.2))'
-                      : 'none',
-                }}
-              />
-              <p
-                style={{
-                  fontSize: '14px',
-                  margin: 0,
-                  fontWeight: hoveredTool === tool ? 'bold' : 'normal',
-                  color: hoveredTool === tool ? '#8a8160' : '#333',
-                }}
-              >
-                {tool}
+      <main id="inicio">
+        {/* ---------- HERO ---------- */}
+        <section className="hero">
+          <div className="container hero-grid">
+            <div>
+              <span className="badge">
+                <span className="dot" /> Abierto a nuevas oportunidades
+              </span>
+              <h1>
+                Convierto datos en <em>decisiones</em> confiables.
+              </h1>
+              <p className="lead">
+                Analista de Datos y BI con más de 10 años de experiencia: una década en
+                investigación de mercados en Kantar y hoy proyectos de calidad de datos y
+                tableros con SQL, Power BI y DAX para empresas en Colombia.
               </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* PROYECTO DESTACADO */}
-      <section
-        id="projects"
-        style={{
-          background: '#8a8160',
-          padding: '20px',
-          textAlign: 'center',
-          color: 'white',
-        }}
-      >
-        <h2 style={{ margin: 0, fontSize: '18px' }}>PROYECTO DESTACADO</h2>
-      </section>
-
-      <div style={{ padding: '60px 20px', maxWidth: '800px', margin: 'auto' }}>
-        {/* TARJETA PRINCIPAL (IMAGEN Y TITULO) */}
-        <div
-          onClick={() => setOpenProject1(!openProject1)}
-          style={{
-            borderRadius: '15px',
-            overflow: 'hidden',
-            boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
-            background: 'white',
-            cursor: 'pointer',
-            transition: 'transform 0.3s',
-            display: 'flex',
-            flexDirection: 'column', // CAMBIO: Diseño en columna para centrar logo arriba
-            alignItems: 'center', // Centrado horizontal de los elementos
-            paddingBottom: '25px', // Espacio abajo
-          }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.transform = 'translateY(-5px)')
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.transform = 'translateY(0)')
-          }
-        >
-          {/* LOGO CENTRADO ARRIBA */}
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS293Hek_6UVYIo_oLWacYkQeMF0Lq2y0P58g&amp;s"
-            style={{
-              width: '100%',
-              maxWidth: '400px', // Ajusta el tamaño máximo del logo
-              height: '200px',
-              objectFit: 'contain', // Mantiene la proporción del logo sin recortar
-              marginTop: '20px',
-            }}
-            alt="Logo Fresco & Sano"
-          />
-
-          {/* TEXTO ABAJO DEL LOGO */}
-          <div
-            style={{
-              padding: '20px 25px 0 25px',
-              textAlign: 'center',
-              width: '100%',
-            }}
-          >
-            <h3
-              style={{ margin: '0 0 10px 0', fontSize: '20px', color: '#333' }}
-            >
-              Análisis de Estrategia Comercial y Diagnóstico de Ingresos
-            </h3>
-            <p
-              style={{
-                color: '#666',
-                fontSize: '16px',
-                lineHeight: '1.5',
-                margin: 0,
-                alignItems: 'center',
-              }}
-            >
-              <strong>Objetivo:</strong> Optimización de ingresos y diagnóstico
-              de salud financiera mediante análisis predictivo y prescriptivo.
-            </p>
-            <p
-              style={{
-                color: '#8a8160',
-                fontWeight: 'bold',
-                marginTop: '15px',
-              }}
-            >
-              {openProject1 ? 'Ver menos ↑' : 'Ver detalles ↓'}
-            </p>
-          </div>
-        </div>
-
-        {/* DETALLES DESPLEGABLES (RECUADRO CON BORDES COMPLETOS) */}
-        {openProject1 && (
-          <div
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              padding: '40px',
-              background: '#ffffff',
-              border: '1px solid #e0e0e0',
-              borderTop: '4px solid #8a8160',
-              borderRadius: '0 0 15px 15px',
-              marginTop: '-15px', // Conexión visual con la tarjeta superior
-              textAlign: 'left',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.05)',
-            }}
-          >
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '30px' }}>
-              {/* COLUMNA IZQUIERDA: TEXTO */}
-              <div style={{ flex: '2', minWidth: '300px' }}>
-                <h4
-                  style={{
-                    margin: '0 0 15px 0',
-                    color: '#8a8160',
-                    fontSize: '20px',
-                    letterSpacing: '0.5px',
-                  }}
-                >
-                  RESUMEN DEL PROYECTO
-                </h4>
-                <p
-                  style={{
-                    color: '#444',
-                    fontSize: '16px',
-                    lineHeight: '1.7',
-                    margin: '0 0 25px 0',
-                  }}
-                >
-                  Identifiqué una vulnerabilidad crítica: una{' '}
-                  <strong>caída del 82% en ingresos anuales</strong> provocada
-                  por la alta dependencia de productos orgánicos y una factura 
-                  promedio de solo <strong>19,34 $</strong>. Asi que diseñé una
-                  estrategia de diversificación y un motor de recomendaciones
-                  para mitigar el riesgo del 93% de concentración en un solo
-                  departamento.
-                </p>
-
-                <h4
-                  style={{
-                    margin: '0 0 15px 0',
-                    color: '#8a8160',
-                    fontSize: '18px',
-                  }}
-                >
-                  STACK TÉCNICO & IMPACTO
-                </h4>
-                <div
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: '1fr 1fr',
-                    gap: '15px',
-                  }}
-                >
-                  <div>
-                    <span
-                      style={{
-                        display: 'block',
-                        fontWeight: 'bold',
-                        color: '#333',
-                      }}
-                    >
-                      📊 SQL & ETL
-                    </span>
-                    <span style={{ fontSize: '14px', color: '#666' }}>
-                      Procesamiento de +2M de registros de ventas.
-                    </span>
-                  </div>
-                  <div>
-                    <span
-                      style={{
-                        display: 'block',
-                        fontWeight: 'bold',
-                        color: '#333',
-                      }}
-                    >
-                      📈 Power BI
-                    </span>
-                    <span style={{ fontSize: '14px', color: '#666' }}>
-                      Dashboard de diagnóstico de ingresos.
-                    </span>
-                  </div>
-                  <div>
-                    <span
-                      style={{
-                        display: 'block',
-                        fontWeight: 'bold',
-                        color: '#333',
-                      }}
-                    >
-                      🐍 Python
-                    </span>
-                    <span style={{ fontSize: '14px', color: '#666' }}>
-                      Algoritmo de recomendación mediante Market Basket Analysis
-                      para estrategias de Upselling.
-                    </span>
-                  </div>
+              <div className="hero-actions">
+                <a className="btn btn-primary" href="/CV_JesusGonzalez.pdf" target="_blank" rel="noreferrer">
+                  Descargar hoja de vida
+                </a>
+                <a className="btn btn-ghost" href="#proyectos">
+                  Ver proyectos
+                </a>
+                <a className="btn btn-ghost" href={LINKEDIN} target="_blank" rel="noreferrer">
+                  LinkedIn
+                </a>
+              </div>
+              <div className="stats">
+                <div className="stat">
+                  <strong>10+</strong>
+                  <span>años con datos</span>
+                </div>
+                <div className="stat">
+                  <strong>2 M+</strong>
+                  <span>registros limpiados y modelados</span>
+                </div>
+                <div className="stat">
+                  <strong>~50</strong>
+                  <span>estudios migrados con &lt;2 % de error</span>
+                </div>
+                <div className="stat">
+                  <strong>60</strong>
+                  <span>reglas de calidad en SAP</span>
                 </div>
               </div>
+            </div>
+            <div className="portrait-wrap">
+              <img
+                className="portrait"
+                src="/buso_Rojo.jpg"
+                alt="Jesús David González, Analista de Datos"
+              />
+              <div className="portrait-tag">
+                <b>Bogotá, Colombia</b>
+                Presencial, híbrido o remoto
+              </div>
+            </div>
+          </div>
+        </section>
 
-              {/* COLUMNA DERECHA: ACCIONES */}
-              <div
-                style={{
-                  flex: '1',
-                  minWidth: '250px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '15px',
-                  justifyContent: 'center',
-                  background: '#f9f9f9',
-                  padding: '25px',
-                  borderRadius: '12px',
-                }}
-              >
-                <p
-                  style={{
-                    margin: 0,
-                    fontSize: '13px',
-                    color: '#888',
-                    textAlign: 'center',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  RECURSOS DEL PROYECTO
+        {/* ---------- SOBRE MÍ ---------- */}
+        <section className="block" id="sobre-mi">
+          <div className="container">
+            <p className="eyebrow">Sobre mí</p>
+            <h2 className="section-title">Precisión, método y datos que se pueden defender.</h2>
+            <div className="about-grid">
+              <div>
+                <p>
+                  Trabajé diez años en Kantar procesando y validando bases de estudios de
+                  mercado con Dimensions, Survey Reporter, SPSS y Excel. Ahí aprendí lo que
+                  más valoro de un dato: que alguien pueda confiar en él.
                 </p>
-                <a
-                  href="https://app.powerbi.com/reportEmbed?reportId=0142068e-5f40-4430-a4d0-707b087ab8a2&autoAuth=true&ctid=5cd4039d-27ec-4745-8bf4-e4abd89b3c58"
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{ textDecoration: 'none' }}
-                >
-                  <button
-                    style={{
-                      ...buttonStyle,
-                      width: '100%',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '10px',
-                    }}
-                  >
-                    <span>📊</span> Ver Dashboard Completo
-                  </button>
+                <p>
+                  Hoy, en KPISoft, limpio y estructuro bases de más de dos millones de
+                  registros, construyo modelos y tableros en Power BI con medidas DAX y
+                  reviso la calidad de datos de SAP Business One con reglas documentadas,
+                  cambios trazables y controles para que los errores no regresen.
+                </p>
+                <p>
+                  Busco un rol de Analista de Datos o BI donde pueda seguir combinando
+                  rigor técnico con explicaciones claras para quienes toman decisiones.
+                  También acepto proyectos freelance.
+                </p>
+              </div>
+              <aside className="facts">
+                <h3>De un vistazo</h3>
+                <ul>
+                  <li>
+                    <b>Rol</b> Analista de Datos / BI
+                  </li>
+                  <li>
+                    <b>Ubicación</b> Soacha · Bogotá, Mosquera, Funza o remoto
+                  </li>
+                  <li>
+                    <b>Idiomas</b> Español nativo · Inglés básico
+                  </li>
+                  <li>
+                    <b>Disponible</b> Tiempo completo, contrato o freelance
+                  </li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        {/* ---------- COMPETENCIAS ---------- */}
+        <section className="block alt" id="competencias">
+          <div className="container">
+            <p className="eyebrow">Competencias</p>
+            <h2 className="section-title">Herramientas con las que trabajo a diario</h2>
+            <p className="section-intro">
+              En oscuro, las que domino con más profundidad y uso en proyectos reales.
+            </p>
+            <div className="skills-grid">
+              {skills.map((group) => (
+                <div className="skill-card" key={group.title}>
+                  <h3>{group.title}</h3>
+                  <div className="chips">
+                    {group.strong?.map((s) => (
+                      <span className="chip strong" key={s}>
+                        {s}
+                      </span>
+                    ))}
+                    {group.items.map((s) => (
+                      <span className="chip" key={s}>
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ---------- PROYECTOS ---------- */}
+        <section className="block" id="proyectos">
+          <div className="container">
+            <p className="eyebrow">Portafolio</p>
+            <h2 className="section-title">Casos de trabajo</h2>
+            <p className="section-intro">
+              Cada caso sigue la misma estructura: problema, datos, método, resultado y
+              herramientas. Los proyectos de clientes están anonimizados.
+            </p>
+
+            <div className="projects">
+              {/* CASO 1: SAP */}
+              <article className="project">
+                <div className="project-head">
+                  <span className="tag">Calidad de datos · SAP Business One</span>
+                  <span className="tag live">En desarrollo</span>
+                </div>
+                <div className="project-body">
+                  <h3>Revisión de calidad de datos para una empresa distribuidora</h3>
+                  <p>
+                    La empresa sospechaba que errores en sus datos afectaban facturación,
+                    inventario y relación con clientes: correos faltantes para factura
+                    electrónica, duplicados y facturas con fechas imposibles. Diseñé un
+                    proceso con reglas de calidad que detecta, clasifica y propone
+                    correcciones sin tocar documentos contabilizados.
+                  </p>
+                  <div className="metrics">
+                    <div className="metric">
+                      <strong>316.499</strong>
+                      <span>registros en 4 tablas</span>
+                    </div>
+                    <div className="metric">
+                      <strong>60</strong>
+                      <span>reglas de calidad definidas</span>
+                    </div>
+                    <div className="metric">
+                      <strong>22</strong>
+                      <span>tipos de error confirmados</span>
+                    </div>
+                    <div className="metric">
+                      <strong>6.251</strong>
+                      <span>casos confirmados</span>
+                    </div>
+                  </div>
+                  <details className="more">
+                    <summary>Ver método y hallazgos</summary>
+                    <div className="detail-grid">
+                      <div>
+                        <h4>Cómo lo hice</h4>
+                        <div className="flow" aria-label="Flujo de trabajo">
+                          {sapFlow.map((step, i) => (
+                            <span key={step} className={i < 2 ? 'on' : ''}>
+                              {step}
+                            </span>
+                          ))}
+                        </div>
+                        <p>
+                          Cada regla se prueba por separado y se clasifica según su
+                          confianza: confirmadas, en prueba o solo informativas. Las
+                          correcciones seguras se automatizan, las dudosas se proponen al
+                          cliente y las facturas y notas crédito contabilizadas nunca se
+                          modifican. Todo cambio queda en una bitácora.
+                        </p>
+                      </div>
+                      <div>
+                        <h4>Ejemplos de hallazgos</h4>
+                        <ul>
+                          <li>1.796 clientes activos sin correo para factura electrónica.</li>
+                          <li>1.260 facturas con vencimiento anterior a su emisión.</li>
+                          <li>1.112 productos con descripción repetida.</li>
+                          <li>
+                            Un hallazgo grande en prueba: facturas cuyo total no coincide con
+                            la suma de sus líneas; se valida con contabilidad antes de
+                            actuar.
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <p className="note">
+                      Al cierre entrego informe de hallazgos, base limpia, bitácora de
+                      cambios, catálogo de reglas y recomendaciones. Herramientas: SAP
+                      Business One, SQL, Excel, Postman y documentación de reglas.
+                    </p>
+                  </details>
+                </div>
+              </article>
+
+              {/* CASO 2: Sano y Fresco */}
+              <article className="project">
+                <div className="project-head">
+                  <span className="tag">Power BI · SQL · Python</span>
+                  <span className="tag done">Proyecto de práctica</span>
+                </div>
+                <div className="project-body">
+                  <img className="logo-strip" src="/Logo.jpg" alt="Logo Sano y Fresco" />
+                  <h3 style={{ marginTop: 12 }}>
+                    Estrategia comercial y diagnóstico de ingresos
+                  </h3>
+                  <p>
+                    Diagnóstico de salud financiera de un negocio de alimentos con análisis
+                    descriptivo, predictivo y prescriptivo, y un motor de recomendaciones
+                    para estrategias de venta cruzada.
+                  </p>
+                  <div className="metrics">
+                    <div className="metric">
+                      <strong>−82 %</strong>
+                      <span>caída de ingresos anuales detectada</span>
+                    </div>
+                    <div className="metric">
+                      <strong>93 %</strong>
+                      <span>concentración en un solo departamento</span>
+                    </div>
+                    <div className="metric">
+                      <strong>19,34 $</strong>
+                      <span>factura promedio</span>
+                    </div>
+                    <div className="metric">
+                      <strong>+2 M</strong>
+                      <span>registros de ventas procesados</span>
+                    </div>
+                  </div>
+                  <details className="more">
+                    <summary>Ver detalles</summary>
+                    <div className="detail-grid">
+                      <div>
+                        <h4>Qué encontré</h4>
+                        <p>
+                          Una vulnerabilidad crítica: alta dependencia de productos
+                          orgánicos y un ticket promedio bajo. Diseñé una estrategia de
+                          diversificación para mitigar el riesgo de concentración.
+                        </p>
+                      </div>
+                      <div>
+                        <h4>Stack</h4>
+                        <ul>
+                          <li>SQL y ETL para procesar +2 M de registros.</li>
+                          <li>Power BI: tablero de diagnóstico de ingresos.</li>
+                          <li>Python: Market Basket Analysis para upselling.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </details>
+                  <div className="project-actions">
+                    <a className="btn btn-primary sm" href={DASHBOARD} target="_blank" rel="noreferrer">
+                      Ver tablero completo
+                    </a>
+                    <a
+                      className="btn btn-ghost sm"
+                      href="/Informe_Conclusiones_Requerimientos.pdf"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Documentación PDF
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              {/* CASO 3: Kantar */}
+              <article className="project">
+                <div className="project-head">
+                  <span className="tag">Investigación de mercados · Kantar</span>
+                  <span className="tag done">Completado</span>
+                </div>
+                <div className="project-body">
+                  <h3>Migración y homologación de ~50 estudios</h3>
+                  <p>
+                    Migré y homologué cerca de 50 estudios de investigación de mercados a una
+                    nueva estructura, con controles de calidad contra las bases originales
+                    mediante tablas dinámicas y fórmulas. El resultado fue una tasa de error
+                    inferior al 2 %, con reconocimiento del cliente y promoción.
+                  </p>
+                  <div className="metrics">
+                    <div className="metric">
+                      <strong>~50</strong>
+                      <span>estudios migrados</span>
+                    </div>
+                    <div className="metric">
+                      <strong>&lt; 2 %</strong>
+                      <span>de error</span>
+                    </div>
+                    <div className="metric">
+                      <strong>10 años</strong>
+                      <span>en Kantar</span>
+                    </div>
+                  </div>
+                  <p className="note">
+                    Herramientas: Dimensions, Survey Reporter (scripting y lógica
+                    condicional), SPSS y Excel.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* ---------- EXPERIENCIA ---------- */}
+        <section className="block alt" id="experiencia">
+          <div className="container">
+            <p className="eyebrow">Experiencia y formación</p>
+            <h2 className="section-title">Trayectoria</h2>
+            <p className="section-intro">
+              Más de una década procesando, validando y analizando información.
+            </p>
+
+            <div className="timeline">
+              <div className="job">
+                <div className="job-top">
+                  <div>
+                    <h3>Analista de Datos (contratista)</h3>
+                    <span className="org">KPISoft SAS</span>
+                  </div>
+                  <span className="when">Abr 2025 – Actualidad</span>
+                </div>
+                <ul>
+                  <li>
+                    Limpieza, estructuración y validación de bases comerciales (+2 millones de
+                    registros) y modelo de datos en Power BI.
+                  </li>
+                  <li>
+                    Tableros con medidas DAX, segmentadores y drill-through en Power BI
+                    Service: ventas, ingresos, margen, inventario y desempeño por vendedor,
+                    tienda y ciudad.
+                  </li>
+                  <li>
+                    Consultas SQL (JOIN, GROUP BY, CASE, subconsultas) para extracción y
+                    análisis.
+                  </li>
+                  <li>
+                    Revisión de 316.499 registros de SAP Business One con 60 reglas de
+                    calidad; 22 tipos de error confirmados y correcciones con bitácora y
+                    controles preventivos.
+                  </li>
+                </ul>
+              </div>
+
+              <div className="job">
+                <div className="job-top">
+                  <div>
+                    <h3>Ejecutivo de Procesamiento de Datos</h3>
+                    <span className="org">Kantar (antes Millward Brown)</span>
+                  </div>
+                  <span className="when">Dic 2015 – Mar 2025</span>
+                </div>
+                <ul>
+                  <li>
+                    Procesé y validé bases de investigación de mercados según cuestionarios
+                    y requerimientos del cliente.
+                  </li>
+                  <li>
+                    Cruces y análisis estadístico: desviación estándar, Jaccard y Penalty
+                    Analysis, con Dimensions, Survey Reporter, SPSS y Excel.
+                  </li>
+                  <li>
+                    Control de calidad contra bases originales; automatización de procesos
+                    recurrentes y detección de anomalías.
+                  </li>
+                  <li>
+                    Migré y homologué ~50 estudios con menos del 2 % de error; recibí
+                    reconocimiento del cliente y promoción.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="edu-grid">
+              <div className="edu">
+                <h3>Ingeniería de Software</h3>
+                <p>Politécnico Grancolombiano · 2018 – 2023</p>
+                <p>8 semestres cursados (programa suspendido).</p>
+              </div>
+              <div className="edu">
+                <h3>Tecnólogo en Análisis y Desarrollo de Sistemas de Información</h3>
+                <p>SENA · 2012 – 2014</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ---------- CONTACTO ---------- */}
+        <section className="block" id="contacto">
+          <div className="container">
+            <div className="contact">
+              <h2>¿Trabajamos juntos?</h2>
+              <p>
+                Estoy disponible para roles de Analista de Datos / BI en Bogotá o remoto, y
+                para proyectos freelance de calidad de datos y tableros.
+              </p>
+              <div className="contact-actions">
+                <a className="btn btn-primary" href={`mailto:${EMAIL}`}>
+                  Escribir por correo
                 </a>
-                <a
-                  href="/Informe_Conclusiones_Requerimientos.pdf"
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{ textDecoration: 'none' }}
-                >
-                  <button
-                    style={{
-                      ...buttonStyle,
-                      width: '100%',
-                      background: '#444',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '10px',
-                    }}
-                  >
-                    <span>📄</span> Ver Documentación PDF
-                  </button>
+                <a className="btn btn-ghost" href={WHATSAPP} target="_blank" rel="noreferrer">
+                  WhatsApp
+                </a>
+                <a className="btn btn-ghost" href={LINKEDIN} target="_blank" rel="noreferrer">
+                  LinkedIn
                 </a>
               </div>
             </div>
           </div>
-        )}
-      </div>
+        </section>
+      </main>
 
-      {/* CONTACTO */}
-      <section
-        id="contact"
-        style={{
-          background: '#f5f5f5',
-          padding: '60px 20px',
-          textAlign: 'center',
-        }}
-      >
-        <h2>¿Hablamos?</h2>
-        <a href="mailto:David.gp1223@gmail.com">
-          <button style={buttonStyle}>Enviar correo</button>
-        </a>
-      </section>
-
-      <footer
-        style={{
-          textAlign: 'center',
-          padding: '30px',
-          color: '#999',
-          fontSize: '13px',
-        }}
-      >
-        © 2026 - David Gonzalez | Portafolio Data Analytics
-      </footer>
-    </div>
+      <footer>© 2026 Jesús David González · Analista de Datos y BI</footer>
+    </>
   );
-}
-
-const buttonStyle = {
-  padding: '12px 26px',
-  borderRadius: '10px',
-  border: 'none',
-  background: '#8a8160',
-  color: 'white',
-  fontSize: '15px',
-  cursor: 'pointer',
-  fontWeight: '600' as const,
-};
-
-function getIconUrl(name: string) {
-  const icons: { [key: string]: string } = {
-    Excel:
-      'https://upload.wikimedia.org/wikipedia/commons/7/73/Microsoft_Excel_2013-2019_logo.svg',
-    'Power BI':
-      'https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg',
-    SQL: 'https://cdn-icons-png.flaticon.com/512/2772/2772128.png',
-    Python:
-      'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg',
-  };
-  return icons[name];
 }
