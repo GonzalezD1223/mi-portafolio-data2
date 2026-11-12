@@ -392,7 +392,13 @@ export default function App() {
                     </li>
                     <li>
                       Migración de ~50 estudios con menos de 2 % de error; reconocimiento del
-                      cliente y promoción.
+                      cliente.
+                    </li>
+                    <li>
+                      Dos ascensos consecutivos (2022 y 2023): de Junior a Asistente y luego a
+                      Ejecutivo, por la calidad de mis proyectos y un volumen de 10 a 13 estudios
+                      al mes; me asignaron una de las cuentas más grandes del área. Bonificación
+                      por calidad y apoyo al equipo cuatro años seguidos.
                     </li>
                   </ul>
                 </div>
