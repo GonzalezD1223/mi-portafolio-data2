@@ -1,8 +1,9 @@
+import { useState } from 'react';
+
 const EMAIL = 'david.gp1223@gmail.com';
 const LINKEDIN = 'https://www.linkedin.com/in/jesusdavidgonzalezp';
 const WHATSAPP = 'https://wa.me/573134772818';
-const DASHBOARD =
-  'https://app.powerbi.com/reportEmbed?reportId=0142068e-5f40-4430-a4d0-707b087ab8a2&autoAuth=true&ctid=5cd4039d-27ec-4745-8bf4-e4abd89b3c58';
+const SHOTS = ['/sano-fresco/pg-1.jpg', '/sano-fresco/pg-2.jpg'];
 
 const findings = [
   { label: 'Clientes activos sin correo para factura electrónica', n: 1796 },
@@ -17,6 +18,7 @@ const stepsSap = ['Descargar', 'Detectar', 'Revisar', 'Aprobar', 'Corregir'];
 const fmt = (n: number) => n.toLocaleString('es-CO');
 
 export default function App() {
+  const [shot, setShot] = useState<number | null>(null);
   return (
     <>
       <header className="nav">
@@ -283,9 +285,9 @@ export default function App() {
                     recomendaciones para vender productos complementarios.
                   </p>
                   <div className="acts2">
-                    <a className="btn dark" href={DASHBOARD} target="_blank" rel="noreferrer">
-                      Abrir el tablero
-                    </a>
+                    <button type="button" className="btn dark" onClick={() => setShot(0)}>
+                      Ver capturas del tablero
+                    </button>
                     <a
                       className="btn light"
                       href="/Informe_Conclusiones_Requerimientos.pdf"
@@ -446,6 +448,21 @@ export default function App() {
         <span>© 2026 David González</span>
         <span>Bogotá, Colombia</span>
       </footer>
+      {shot !== null && (
+        <div className="lb" role="dialog" aria-modal="true" onClick={() => setShot(null)}>
+          <div className="lb-in" onClick={(e) => e.stopPropagation()}>
+            <img src={SHOTS[shot]} alt={`Captura ${shot + 1} del tablero Sano y Fresco`} />
+            <div className="lb-bar">
+              <button type="button" className="btn light" onClick={() => setShot(shot === 0 ? 1 : 0)}>
+                {shot === 0 ? 'Ver análisis de canasta →' : '← Ver tablero de ventas'}
+              </button>
+              <button type="button" className="btn dark" onClick={() => setShot(null)}>
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
